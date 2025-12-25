@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🎄 圣诞祝福 - Lucca & Joe 🎄</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        background: linear-gradient(
+          135deg,
+          #0f2027 0%,
+          #203a43 50%,
+          #2c5364 100%
+        );
+        font-family: "Cormorant Garamond", "Georgia", serif;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      /* 雪花动画 */
+      .snowflakes {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1000;
+        overflow: hidden;
+      }
+
+      .snowflake {
+        position: absolute;
+        top: -10px;
+        color: #fff;
+        font-size: 1em;
+        text-shadow: 0 0 5px #fff;
+        animation: fall linear infinite;
+        opacity: 0.8;
+      }
+
+      @keyframes fall {
+        0% {
+          transform: translateY(-10px) rotate(0deg);
+        }
+        100% {
+          transform: translateY(100vh) rotate(360deg);
+        }
+      }
+
+      /* 主容器 */
+      .card-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .card {
+        background: linear-gradient(180deg, #fffefb 0%, #faf8f5 100%);
+        border-radius: 20px;
+        padding: 60px 50px;
+        max-width: 620px;
+        width: 100%;
+        box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25),
+          0 0 0 1px rgba(255, 255, 255, 0.1);
+        position: relative;
+        overflow: hidden;
+        border: none;
+      }
+
+      /* 装饰边框 - 优雅金色边框 */
+      .card::before {
+        content: "";
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+        border: 1px solid rgba(180, 140, 100, 0.3);
+        border-radius: 12px;
+        pointer-events: none;
+      }
+
+      .card::after {
+        content: "";
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        right: 25px;
+        bottom: 25px;
+        border: 1px solid rgba(180, 140, 100, 0.15);
+        border-radius: 10px;
+        pointer-events: none;
+      }
+
+      /* 顶部装饰 */
+      .header-decoration {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .christmas-tree {
+        font-size: 70px;
+        animation: gentle-float 3s ease-in-out infinite;
+        filter: drop-shadow(0 5px 15px rgba(0, 100, 0, 0.2));
+      }
+
+      @keyframes gentle-float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+
+      .ornaments {
+        font-size: 20px;
+        margin: 15px 0;
+        letter-spacing: 8px;
+        opacity: 0.8;
+      }
+
+      /* 标题 */
+      .title {
+        text-align: center;
+        font-family: "Great Vibes", cursive;
+        color: #8b3a3a;
+        font-size: 3.2em;
+        margin: 25px 0 15px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+        font-weight: 400;
+        letter-spacing: 2px;
+      }
+
+      .subtitle {
+        text-align: center;
+        color: #5d7a6a;
+        font-size: 1.2em;
+        margin-bottom: 35px;
+        font-weight: 400;
+        letter-spacing: 3px;
+      }
+
+      /* 名字样式 */
+      .names {
+        text-align: center;
+        font-family: "Great Vibes", cursive;
+        font-size: 2.8em;
+        color: #8b3a3a;
+        margin: 30px 0;
+        font-weight: 400;
+        letter-spacing: 2px;
+      }
+
+      .heart {
+        display: inline-block;
+        color: #c77b7b;
+        animation: heartbeat 2s ease-in-out infinite;
+        font-size: 0.8em;
+        margin: 0 5px;
+      }
+
+      @keyframes heartbeat {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.9;
+        }
+        50% {
+          transform: scale(1.15);
+          opacity: 1;
+        }
+      }
+
+      /* 祝福内容 */
+      .message-box {
+        background: linear-gradient(135deg, #fdf9f3 0%, #f5ebe0 100%);
+        border-radius: 16px;
+        padding: 35px;
+        margin: 30px 0;
+        position: relative;
+        border: 1px solid rgba(180, 140, 100, 0.2);
+      }
+
+      .baby-icon {
+        text-align: center;
+        font-size: 50px;
+        margin-bottom: 20px;
+        animation: gentle-rock 3s ease-in-out infinite;
+      }
+
+      @keyframes gentle-rock {
+        0%,
+        100% {
+          transform: rotate(-3deg) scale(1);
+        }
+        50% {
+          transform: rotate(3deg) scale(1.02);
+        }
+      }
+
+      .message {
+        text-align: center;
+        color: #5a5a5a;
+        font-size: 1.25em;
+        line-height: 2;
+        font-weight: 400;
+      }
+
+      .highlight {
+        color: #8b3a3a;
+        font-weight: 600;
+      }
+
+      /* 祝福列表 */
+      .wishes {
+        list-style: none;
+        margin: 35px 0;
+        padding: 0 30px;
+      }
+
+      .wishes li {
+        padding: 14px 0;
+        font-size: 1.15em;
+        color: #5d6d5d;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        border-bottom: 1px solid rgba(180, 140, 100, 0.1);
+      }
+
+      .wishes li:last-child {
+        border-bottom: none;
+      }
+
+      .wishes li::before {
+        content: "✦";
+        font-size: 0.8em;
+        color: #b48c64;
+      }
+
+      /* 底部装饰 */
+      .footer-decoration {
+        text-align: center;
+        margin-top: 40px;
+        font-size: 24px;
+        letter-spacing: 15px;
+        opacity: 0.7;
+      }
+
+      .sparkle {
+        animation: sparkle 2.5s ease-in-out infinite;
+      }
+
+      @keyframes sparkle {
+        0%,
+        100% {
+          opacity: 0.7;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.4;
+          transform: scale(0.95);
+        }
+      }
+
+      /* 签名 */
+      .signature {
+        text-align: center;
+        margin-top: 35px;
+        color: #8b7355;
+        font-style: italic;
+        font-size: 1.15em;
+        letter-spacing: 1px;
+      }
+
+      .from {
+        text-align: center;
+        margin-top: 20px;
+        font-family: "Great Vibes", cursive;
+        color: #8b3a3a;
+        font-size: 1.8em;
+        letter-spacing: 2px;
+      }
+
+      .date {
+        text-align: center;
+        color: #a89080;
+        margin-top: 25px;
+        font-size: 0.95em;
+        letter-spacing: 2px;
+      }
+
+      /* 角落装饰 */
+      .corner-decoration {
+        position: absolute;
+        font-size: 28px;
+        opacity: 0.6;
+      }
+
+      .top-left {
+        top: 30px;
+        left: 30px;
+      }
+      .top-right {
+        top: 30px;
+        right: 30px;
+      }
+      .bottom-left {
+        bottom: 30px;
+        left: 30px;
+      }
+      .bottom-right {
+        bottom: 30px;
+        right: 30px;
+      }
+
+      /* 圣诞灯串 - 改为优雅的分隔线 */
+      .divider {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        margin: 25px 0;
+        color: #b48c64;
+        font-size: 12px;
+        letter-spacing: 5px;
+      }
+
+      .divider-line {
+        width: 60px;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, #b48c64, transparent);
+      }
+
+      /* 响应式设计 */
+      @media (max-width: 600px) {
+        .card {
+          padding: 30px 20px;
+          margin: 10px;
+        }
+        .title {
+          font-size: 1.8em;
+        }
+        .names {
+          font-size: 1.6em;
+        }
+        .message {
+          font-size: 1.1em;
+        }
+        .christmas-tree {
+          font-size: 60px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 雪花效果 -->
+    <div class="snowflakes" id="snowflakes"></div>
+
+    <div class="card-container">
+      <div class="card">
+        <!-- 角落装饰 -->
+        <span class="corner-decoration top-left">❄</span>
+        <span class="corner-decoration top-right">❄</span>
+        <span class="corner-decoration bottom-left">✦</span>
+        <span class="corner-decoration bottom-right">✦</span>
+
+        <!-- 顶部装饰 -->
+        <div class="header-decoration">
+          <div class="christmas-tree">🎄</div>
+          <div class="ornaments">✦ ❄ ✦ ❄ ✦</div>
+        </div>
+
+        <!-- 优雅分隔线 -->
+        <div class="divider">
+          <span class="divider-line"></span>
+          <span>✦</span>
+          <span class="divider-line"></span>
+        </div>
+
+        <!-- 标题 -->
+        <h1 class="title">Merry Christmas</h1>
+        <p class="subtitle">✦ 圣诞快乐 · 喜迎新生 ✦</p>
+
+        <!-- 名字 -->
+        <div class="names">Lucca <span class="heart">❤️</span> Joe</div>
+
+        <!-- 祝福消息 -->
+        <div class="message-box">
+          <div class="baby-icon">👶</div>
+          <p class="message">
+            恭喜 <span class="highlight">Lucca</span> 与
+            <span class="highlight">Joe</span><br />
+            即将迎来爱情的结晶<br />
+            愿这份喜悦温暖整个冬日
+          </p>
+        </div>
+
+        <!-- 祝福列表 -->
+        <ul class="wishes">
+          <li>愿宝宝健康平安降临人间</li>
+          <li>祝 Lucca 孕期顺遂安康</li>
+          <li>愿你们一家幸福美满</li>
+          <li>身体康健，诸事顺意</li>
+        </ul>
+
+        <!-- 底部装饰 -->
+        <div class="footer-decoration">
+          <span class="sparkle">✦</span>
+          <span>❄</span>
+          <span class="sparkle">✦</span>
+          <span>❄</span>
+          <span class="sparkle">✦</span>
+        </div>
+
+        <!-- 签名 -->
+        <p class="signature">With Love & Best Wishes</p>
+        <p class="from">— From Allen —</p>
+        <p class="date">Christmas 2025</p>
+      </div>
+    </div>
+
+    <script>
+      // 创建雪花效果
+      function createSnowflakes() {
+        const snowflakesContainer = document.getElementById("snowflakes");
+        const snowflakeSymbols = ["❄", "❅", "❆", "✻", "✼"];
+
+        for (let i = 0; i < 50; i++) {
+          const snowflake = document.createElement("div");
+          snowflake.className = "snowflake";
+          snowflake.innerHTML =
+            snowflakeSymbols[
+              Math.floor(Math.random() * snowflakeSymbols.length)
+            ];
+          snowflake.style.left = Math.random() * 100 + "%";
+          snowflake.style.fontSize = Math.random() * 15 + 10 + "px";
+          snowflake.style.animationDuration = Math.random() * 5 + 5 + "s";
+          snowflake.style.animationDelay = Math.random() * 10 + "s";
+          snowflake.style.opacity = Math.random() * 0.6 + 0.4;
+          snowflakesContainer.appendChild(snowflake);
+        }
+      }
+
+      // 页面加载后创建雪花
+      window.onload = createSnowflakes;
+    </script>
+  </body>
+</html>
