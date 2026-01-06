@@ -1,41 +1,64 @@
-# --- 外观设置 ---
-# 字体设置（建议安装 JetBrainsMono Nerd Font 或 Cascadia Code）
+# --- 🎨 外观颜值 (Aesthetics) ---
+
+# 字体：推荐 JetBrainsMono NF，如果没有安装，Ghostty 会回退到默认字体
+# 开启连字特性 (Ligatures)，让代码符号更漂亮
 font-family = "JetBrainsMono Nerd Font"
 font-size = 14
+font-feature = "calt"
+font-feature = "liga"
+font-thicken = true  # 让字体稍微加粗一点点，在高分屏上看着更实
 
-# 主题（Ghostty 内置了上百种主题，可以用 ghostty +list-themes 查看）
-theme = catppuccin-macchiato
+# 主题：Tokyo Night (深色背景，色彩丰富但不刺眼)
+theme = tokyo-night
 
-# 窗口透明度 (0.0 到 1.0)
-window-background-opacity = 0.95
-# 窗口毛玻璃效果 (仅限 macOS)
+# 窗口背景：恰到好处的透明 + 毛玻璃模糊
+window-background-opacity = 0.92
 window-background-blur-radius = 20
 
-# 隐藏窗口标题栏（让界面更极简，macOS 推荐）
-window-title-font-family = "JetBrainsMono Nerd Font"
-macos-titlebar-style = hidden
+# 布局：给文字四周留出呼吸空间，不再紧贴窗口边缘
+window-padding-x = 12
+window-padding-y = 12
 
-# --- 功能设置 ---
-# 启用字体连字 (-> 变成 箭头)
-font-feature = calt
-font-feature = liga
+# 标题栏：使用“透明”风格，让背景色延伸到标题栏，看起来更现代
+# (Linux 下如果不支持会忽略此项)
+macos-titlebar-style = transparent
+macos-option-as-alt = true
 
-# 鼠标自动隐藏
+# --- 🖱️ 光标与交互 (Cursor & Mouse) ---
+
+# 光标风格：方块且闪烁，经典复古感
+cursor-style = block
+cursor-style-blink = true
+
+# 鼠标：打字时自动隐藏鼠标，防止遮挡视线
 mouse-hide-while-typing = true
+# 滚动：稍微调快一点滚动速度
+mouse-scroll-multiplier = 2
 
-# 复制时去除末尾换行符
-copy-on-select = true
+# --- ⚡️ 高效快捷键 (Workflow) ---
+# 使用 Super 键 (Mac上是Command, Linux上是Win键)
 
-# --- 快捷键映射 (Keybinds) ---
-# 快速分屏 (借鉴了常用逻辑)
+# 1. 像管理浏览器一样管理标签页
+keybind = super+t=new_tab
+keybind = super+w=close_surface
+keybind = super+1=goto_tab:1
+keybind = super+2=goto_tab:2
+keybind = super+3=goto_tab:3
+
+# 2. 分屏神器 (不用记复杂的 Tmux 快捷键)
+# Super + D : 向右分屏
 keybind = super+d=new_split:right
+# Super + Shift + D : 向下分屏
 keybind = super+shift+d=new_split:down
 
-# 在分屏间切换 (Command + 方向键)
-keybind = super+left=goto_split:left
-keybind = super+right=goto_split:right
-keybind = super+up=goto_split:up
-keybind = super+down=goto_split:down
+# 3. 在分屏之间“瞬移” (使用 Alt/Option + 方向键)
+keybind = alt+left=goto_split:left
+keybind = alt+right=goto_split:right
+keybind = alt+up=goto_split:up
+keybind = alt+down=goto_split:down
 
-# 快速缩放某个分屏 (类似 tmux 的 Zoom)
-keybind = super+shift+f=toggle_split_zoom
+# 4. 专注模式：按 Super + Z 最大化当前分屏 (再按一次还原)
+keybind = super+z=toggle_split_zoom
+
+# 5. 快速重载配置 (改完配置按下这个立即生效)
+keybind = super+shift+r=reload_config
